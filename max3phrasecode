@@ -1,0 +1,24 @@
+import nltk
+words=[]
+query_tagged = []
+query="an institute of national importance"
+text = nltk.word_tokenize(query)   
+list_tagged =nltk.pos_tag(text)
+#print(list_tagged)
+for i in range(len(list_tagged)):
+    string=''
+    for j in range(i,len(list_tagged)):
+        if(list_tagged[j][1][0]=='N' or list_tagged[j][1][0]=='J' or list_tagged[j][1][0]=='V'):
+            string=string+list_tagged[j][0]+' '
+            if(len(string.split())>3):
+                break
+            print(string)
+        else:
+            string=''
+            break
+
+for i in range(len(list_tagged)):
+    if(list_tagged[i][1][0]!='N' and list_tagged[i][1][0]!='J' and list_tagged[i][1][0]!='V'):
+        print(list_tagged[i][0])
+        
+        
