@@ -1,6 +1,6 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import re 
+#import re 
 
 stop_words = set(stopwords.words('english'))
 
@@ -8,27 +8,22 @@ def createDict(query,SE):
     file=open("C:\\Users\\DELL\\Desktop\\Project\\"+SE+"\\paragraph\\"+query+".txt","r",encoding="utf-8")
     word_dict={}
     while (True):
-        key=file.readline().split(' ')
-        if len(key)==0:
+        x=file.readline()
+        if(x==''):
             break
         
+        key=x.split()
+
         for k in key:
+            k=k.lower()
             word=word_tokenize(k)
             if word[0] in stop_words:
                 continue
-            
-            '''
-            pattern = re.compile('[\W_]+')
-            key=pattern.sub(' ', key).lower()
-            
-            if(key=="" or key==" "):
-                continue
-            '''
-            
-            if key in word_dict:
-                word_dict[key]+=1
+
+            if k in word_dict:
+                word_dict[k]+=1
             else:
-                word_dict[key]=1
+                word_dict[k]=1
             
     #sorting in reverse        
     word_dict1=sorted(word_dict.items(), key = lambda kv:(kv[1], kv[0]),reverse=True) 
@@ -36,17 +31,14 @@ def createDict(query,SE):
     #print (word_dict)        
     file1=open("C:\\Users\\DELL\\Desktop\\Project\\"+SE+"\\word_dict1\\"+query+".txt","w",encoding="utf-8")
     for obj in word_dict1:
-        file1.write(obj[0]+str(obj[1])+"\n")
+        file1.write(obj[0]+" "+str(obj[1])+"\n")
     
 
-createDict("swine flu vaccine","Bing")
+#createDict("swine flu vaccine","Bing")
 
 file=open("C:\\Users\\DELL\\Desktop\\Project\\query_lists.txt",'r')
-i=0
+#i=0
 while(True):
-    if ( i==0): 
-        continue
-    i+=1
     query=file.readline()
     if(query==""):
         break
@@ -55,7 +47,6 @@ while(True):
     
     createDict(query, "Bing")
     #createDict(query, "Duckduckgo")
-
 
 
 
