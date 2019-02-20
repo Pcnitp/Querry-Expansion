@@ -29,10 +29,10 @@ After extracting the top 50 Urls from Bing and Google and saving the obtained re
 PREPROCESSING OF TEXT CONTENT
 =============================
 There were major three steps involved in the preprocessing of text content which were...
-Step1:NLTK Tagger:
+   Step1:NLTK Tagger:
 We read the saved text line by line then using nltk tagger we tagged each word into the parts of speech i.e noun,pronoun,verb,etc. as per the English Language rules
-Step2:Creation of Phrases:
+   Step2:Creation of Phrases:
 In this step,we created the phrases according to previously tagged words by considering if two or more verb,noun,adverb comes consecutively then this forms a phrases and saved the so obtained phrases into file
-Step3:
+   Step3:
 Then we counted the frequency of each phrase and words from the file obtained in the step2 and formed a dictionary where the phrases or words were used as the key and the frequency was the value mapped to the key.The so obtained dictionary was sorted in the decreasing order as per the value of each phrase and word and finally saved the dictionary into a file.
 Now we have the preprocessed data  for the query optimization
