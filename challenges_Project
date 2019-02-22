@@ -1,0 +1,19 @@
+=================================================================================================================
+CHALLENGES IN THE EXTRACTION OF THE TOP 50 LINKS USING DIFFERENT SEARCH ENGINES.
+
+We started our project by extracting top 10 links from Google Search engine using beautiful soup.
+For extending the link extraction for 50 links we faced problems using beautiful soup because it was giving result only first page which contained atmost 15 links so we had to find another way so that we can navigate to the next pages i.e 2nd ,3rd pages and so on in order to get 50 links.
+Also while using beautiful soup we also had to verify that we were not robots which is done in order to ensure security by Google.This happened because we were accessing the web pages frequently(more than 25 times) so Google detected unusual traffic from our systems.
+These problems was resolved using Google API which was suggested Dr. Akshay Deepak Sir.
+We did the same work mentioned as above for Bing and Yahoo.
+For the case of Bing Search Engine we faced problem as without subscription we were not allowed to extract the links and free subscription lasted only for one week so we had to do all the work on Bing search engine within one week.We escalated the work and did the same within one week.
+Yahoo closed its API support so we again moved back to beautiful soup and this time we were applying offset formula for Yahoo in order to get the next pages and was able to get top 50 links which was not possible earlier in the case of Google but this time we faced a new problem all together where in the extracted links which were too long was represented ->contents of the start of the link ..... then contents of the end of the links,the contents in the mid of the links were missing for links which were too long so it was not possible to extract the contents of the web page as the links extracted were not functional.So we had to do move to DuckDuckGo search engine.
+In DuckDuckGo search engine when we tried to extract the top 50 links using API we were able to extract only 30 links.This happened because DuckDuckGo search results are loaded dynamically and it has no option of next page like the search engines,instead it had option of more which added more links onto the same home page.This problem was resolved using Selenium module in python where in selenium did the work of clicking on the more button and so we got our 50 links for each query.
+So those were the main issues during the extraction of top 50 links for each query using the three different search engines namely Google,Bing and DuckDuckGo
+*******************************************************************************************************************
+
+===================================================================================================================
+===================================================================================================================
+EXTRACTION OF THE CONTENT FROM WEB PAGE FOR EACH OF THE LINKS OBTAINED FROM DIFFERENT SEARCH ENGINES
+
+Initially we extracted the whole content using beautiful soup then we took only those texts which were only under the paragraph and header tag.This worked fine for most of the links but for some of the links that majority of the content was under the "div" container so we then tried to extract the contents of the div container also but during this we faced a problem as along with the textual content the tags like anchor tags ,paragraph tags, CSS(Cascading Style Sheets),and Javascript codes which was nested under the div container also got extracted,also some of the texts were repeated multiple times .We rectified the problem using regular expressions for css and javascript codes where in we applied the regex to identify the js and css codes as they follow a paritcular syntax/pattern,but we were not able to remove the repeated contents
