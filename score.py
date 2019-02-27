@@ -26,7 +26,6 @@ def scorer(query, SE):
         f2.write(obj[0]+' '+str(score)+'\n')
         
         
-#scorer('swine flu vaccine', 'Bing')
  
 
 file=open("C:\\Users\\DELL\\Desktop\\Project\\query_lists.txt",'r')
@@ -37,7 +36,6 @@ while(True):
     l=len(query)
     query=query[:l-1]
     
-    scorer(query, "Bing")
-    #createDict(query, "Duckduckgo")
+    scorer(query, "Combined")
 
        
