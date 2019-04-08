@@ -22,7 +22,7 @@ def scorer(query, SE):
             break
         obj=r.split(' ')
         freq=float(obj[1])
-        score=(freq/total)*math.log10(lines/freq)
+        score=(freq/total)*math.log10(total/freq)
         f2.write(obj[0]+' '+str(score)+'\n')
         
 #============================================================================== 
