@@ -43,7 +43,7 @@ def score(query):
     fileb.close()
     filed.close()
     filec.close()
-    
+
     filer=open("C:/Users/DELL/Desktop/Project/Correlation/"+query+".txt",'w',encoding="utf-8")
     
     wordr={}
@@ -53,11 +53,12 @@ def score(query):
             val=0.0
             for p in q:
                 p=p.lower()
-                val+=wordg[p]*wordg[t] + wordg[p]*wordb[t] + wordd[p]*wordd[t]
-            val=1000*val/len(q)
+                val+=wordg[p]*wordg[t] + wordb[p]*wordb[t] + wordd[p]*wordd[t]
+            val=val/len(q)
             wordr[t]=val
             
         except:
+            #wordr[t]=0
             continue
         
     wordx=sorted(wordr.items(), key = lambda kv:(kv[1], kv[0]),reverse=True)
@@ -66,9 +67,9 @@ def score(query):
 
 #============================================================================
 
-score('Swine flu vaccine')
+#score('Swine flu vaccine')
 
-'''
+
 file=open("C:\\Users\\DELL\\Desktop\\Project\\query_lists.txt",'r')
 while(True):
     query=file.readline()
@@ -78,5 +79,4 @@ while(True):
     query=query[:l-1]
     
     score(query)
- '''   
-
+ 
