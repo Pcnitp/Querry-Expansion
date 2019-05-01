@@ -1,7 +1,7 @@
 import math
 
 def scorer(query, SE):
-    f=open("C:/Users/DELL/Desktop/Project/"+SE+"/word_dict/"+query+".txt","r",encoding="utf-8")
+    f=open("C:/Users/DELL/Desktop/Project/Trec/"+SE+"/word_dict1/"+query+".txt","r",encoding="utf-8")
     total=0
     lines=0
     
@@ -13,8 +13,8 @@ def scorer(query, SE):
         obj=r.split(' ')
         total+=float(obj[1])
         
-    f1=open("C:/Users/DELL/Desktop/Project/"+SE+"/word_dict/"+query+".txt","r",encoding="utf-8")
-    f2=open("C:/Users/DELL/Desktop/Project/"+SE+"/score/"+query+".txt","w",encoding="utf-8")
+    f1=open("C:/Users/DELL/Desktop/Project/Trec/"+SE+"/word_dict1/"+query+".txt","r",encoding="utf-8")
+    f2=open("C:/Users/DELL/Desktop/Project/Trec/"+SE+"/score/"+query+".txt","w",encoding="utf-8")
     
     while True:
         r=f1.readline()
@@ -27,7 +27,7 @@ def scorer(query, SE):
         
 #============================================================================== 
 
-file=open("C:\\Users\\DELL\\Desktop\\Project\\query_lists.txt",'r')
+file=open("C:\\Users\\DELL\\Desktop\\Project\\query_lists1.txt",'r')
 while(True):
     query=file.readline()
     if(query==""):
@@ -35,8 +35,8 @@ while(True):
     l=len(query)
     query=query[:l-1]
     
-    scorer(query, 'Combined')
-    scorer(query, 'Google')
+    #scorer(query, 'Combined')
+    #scorer(query, 'Google')
     scorer(query, 'Bing')
-    scorer(query, 'DuckDuckGo')
+    #scorer(query, 'DuckDuckGo')
        
