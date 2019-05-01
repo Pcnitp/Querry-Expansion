@@ -1,32 +1,18 @@
-def googleSearch(query,i):
-    try: 
-        from googlesearch import search 
-    except ImportError:  
-        print("No module named 'google' found") 
-      
-    # to search 
-    l=len(query)
-    name=query[:l-1]+".txt"
-    file=open("C:\\Users\\Kritesh\\Desktop\\Project\\Google\\QueryLinks\\"+name,'w')
-      
-    for j in search(query, tld="co.in", num=50, stop=1, pause=2): 
-        file.write(j+"\n")
-i=0
-file= open("C:\\Users\\Kritesh\\Desktop\\Project\\query_lists.txt", 'r')
-while True:
-    s=file.readline()
-    if(s==""):
-        break
-    googleSearch(s,i)
-    i=i+1
-    print(i)    
-
+def googleSearch(query):
+    print(query)
+    from googlesearch import search 
+    
+    file=open("C:/Users/DELL/Desktop/Project/Trec/Google/"+query+".txt",'w')
+    for j in search(query, tld="co.in", num=50, start=0,stop=None, pause=2): 
+        print(j)
+        file.write(j+"/n")
+    file.close()
         
 #==========================================================
         
 def bingSearch(search_term, i):
 
-    subscription_key = '6726f5f948824c1f8b3a5cd619745b97'
+    subscription_key = '96de0fef4a994eb1945bcd7eb9e00626'
     assert subscription_key
     search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
     #search_term = "swine flu"
@@ -44,25 +30,29 @@ def bingSearch(search_term, i):
     l=len(search_term)
     name=search_term[:l-1]+".txt"
     #print(name)
-    file=open("C:\\Users\\Kritesh\\Desktop\\Project\\Bing\\QueryLinks\\"+name,'w')
+    file=open("C:/Users/DELL/Desktop/Project/Trec/Bing/QueryLinks/"+name,'w')
     for v in search_results["webPages"]["value"]:
         #print(v["url"])
         #print(" ")
         file.write(v["url"]+"\n")
+    file.close();
         
 #bingSearch("swine flu vaccine",0)
-i=0
-file= open("C:\\Users\\Kritesh\\Desktop\\Project\\query_lists.txt", 'r')
+#i=0
+file= open("C:\\Users\\DELL\\Desktop\\Project\\query_lists1.txt", 'r')
 while True:
     s=file.readline()
     if(s==""):
         break
-    bingSearch(s,i)
-    i=i+1
-    print(i)
-        
+    l=len(s)
+    #i=i+1
+    s=s[:l-1]
+    googleSearch(s)
+    #print(i)   
+    
+file.close()
 #========================================================================
-        
+'''      
 def yahooSearch():
     
     import simplejson, urllib
@@ -83,15 +73,15 @@ def yahooSearch():
         url = SEARCH_BASE + '?' + urllib.parse.urlencode(kwargs)
         print(url)
         result = simplejson.load(urllib.request.urlopen(url))
-        '''if 'Error' in result:
+        if 'Error' in result:
             # An error occurred; raise an exception
-            raise YahooSearchError, result['Error']'''
+            raise YahooSearchError, result['Error']
         return result['ResultSet']
     
     info = search('swine flu vaccine')
     results = info['Result']
     for result in results:
         print(result['Url'])
-     
+'''  
 #==========================================================================
-        
+
