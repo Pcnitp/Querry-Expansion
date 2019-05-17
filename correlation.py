@@ -44,22 +44,22 @@ def score(query):
     filed.close()
     filec.close()
 
-    filer=open("C:/Users/DELL/Desktop/Project/Correlation/"+query+".txt",'w',encoding="utf-8")
+    filer=open("C:/Users/DELL/Desktop/Project/Correlation1/"+query+".txt",'w',encoding="utf-8")
     
     wordr={}
     q=query.split()
     for t in wordc:
-        try:
+       # try:
             val=0.0
             for p in q:
                 p=p.lower()
-                val+=wordg[p]*wordg[t] + wordb[p]*wordb[t] + wordd[p]*wordd[t]
+                val+=wordg.get(p,0)*wordg.get(t,0) + wordb.get(p,0)*wordb.get(t,0) + wordd.get(p,0)*wordd.get(t,0)
             val=val/len(q)
             wordr[t]=val
             
-        except:
+       # except:
             #wordr[t]=0
-            continue
+            #continue
         
     wordx=sorted(wordr.items(), key = lambda kv:(kv[1], kv[0]),reverse=True)
     for x in wordx:
